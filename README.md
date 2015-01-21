@@ -25,7 +25,6 @@ public class Account{
     private long id;
     private String userName;
     private String password;
-    @SuishenColumn(converter = EnumConvert.class)
     private AccountType type = AccountType.ADMIN;
     private long timeTag;
     private int status = 1;
@@ -65,7 +64,6 @@ public class Account{
     @SuishenParamName("user_name")
     private String userName;
     private String password;
-    @SuishenColumn(converter = EnumConvert.class)
     private AccountType type = AccountType.ADMIN;
     private long timeTag;
     private int status = 1;

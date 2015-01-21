@@ -1,10 +1,10 @@
 # spring-mvc-model-attribute-alias
-Argument resolver to support alias in spring mvc model attribute
 
-The default spring mvc don't support model attribute alias.For example:
+## Why
 
-Url:
-http://localhost:8080/api/test?user_name=testUser
+The default spring mvc don't support model attribute alias. For example:
+
+**Url**:http://localhost:8080/api/test?user_name=testUser
 
 Controller:
 
@@ -34,9 +34,12 @@ public class Account{
 }
 </pre>
 
-When use spring mvs,the param user_name cannot be mapping to the account userName field.
+When use spring mvc,the param ***user_name*** cannot be mapped to the account ***userName*** field.
 
 In this case, u can use the SuishenServletModelAttributeMethodProcessor.
+
+
+## Usage
 
 In the spring mvs config xml, do as follow:
 

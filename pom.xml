@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.srhang</groupId>
-    <artifactId>spring-mvc-model-attribute-alias</artifactId>
+    <artifactId>spring-remoting-thrift</artifactId>
     <version>0.0.1</version>
 
     <repositories>
@@ -13,6 +13,18 @@
             <id>nexus-osc</id>
             <name>Nexus osc</name>
             <url>http://maven.oschina.net/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>nexus-third</id>
+            <name>Nexus osc third</name>
+            <url>http://maven.oschina.net/content/repositories/thirdparty/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -148,6 +160,17 @@
             <version>18.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>0.9.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>me.srhang</groupId>
+            <artifactId>jlibs</artifactId>
+            <version>0.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>

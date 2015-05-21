@@ -1,5 +1,6 @@
 package me.srhang.libs.spring.remoting.thrift;
 
+import me.srhang.libs.util.HttpClientUtil;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.apache.thrift.TApplicationException;

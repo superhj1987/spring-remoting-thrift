@@ -16,7 +16,7 @@ thrift rpc support in spring: ThriftServiceExporter;ThriftFactoryBean
 
 ### Client
 
-    <bean id="hessianAppService"
+    <bean id="thriftAppService"
           class="me.srhang.libs.spring.remoting.thrift.ThriftProxyFactoryBean">
         <property name="serviceUrl">
             <value>${api.url}</value>

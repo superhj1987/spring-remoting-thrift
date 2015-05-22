@@ -11,7 +11,7 @@ import org.junit.Test;
  * Date: 15/5/22
  * Time: 10:04
  */
-public class TestThrift {
+public class ThriftUtilTest {
     @Test
     public void testBuildProcessor() throws Exception {
         ThriftUtil.buildProcessor(HelloWorldService.Iface.class, new HelloWorldImp());

@@ -14,7 +14,7 @@ public class HelloWorldImp implements HelloWorldService.Iface {
 
     @Override
     public String sayHello(String username) throws TException {
-        return "Hi," + username + " welcome to my blog www.micmiu.com";
+        return "Hi," + username;
     }
 
 }

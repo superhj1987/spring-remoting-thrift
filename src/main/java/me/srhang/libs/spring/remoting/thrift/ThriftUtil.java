@@ -1,11 +1,11 @@
 package me.srhang.libs.spring.remoting.thrift;
 
+import me.srhang.libs.spring.remoting.exception.ThriftRuntimeException;
 import org.apache.thrift.TProcessor;
 import org.apache.thrift.async.TAsyncClientManager;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.protocol.TProtocolFactory;
 import org.apache.thrift.transport.TNonblockingTransport;
-import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 
 import java.lang.reflect.Constructor;
@@ -54,19 +54,32 @@ public class ThriftUtil {
 
     public static TProcessor buildProcessor(Class<?> svcInterface, Object service) throws Exception {
         Class<TProcessor> processorClass = (Class<TProcessor>) getThriftServiceInnerClassOrNull(svcInterface.getEnclosingClass(), PROCESSOR_NAME, false);
-        Assert.notNull(processorClass, "the processor class must not be null");
+        if (processorClass == null) {
+            throw new ThriftRuntimeException("the processor is null");
+        }
+
         Constructor<TProcessor> constructor = ClassUtils.getConstructorIfAvailable(processorClass, svcInterface);
-        Assert.notNull(constructor);
+        if (constructor == null) {
+            throw new ThriftRuntimeException("the processor constructor is null");
+        }
+
         return constructor.newInstance(service);
     }
 
-    public static Constructor<?> getClientConstructor(Class<?> svcInterface){
+    public static Constructor<?> getClientConstructor(Class<?> svcInterface) {
         String client = svcInterface.getName().indexOf("Async") > 0 ? ASYNC_CLIENT_NAME : CLIENT_NAME;
         Class<?>[] args = svcInterface.getName().indexOf("Async") > 0 ? new Class[]{TProtocolFactory.class, TAsyncClientManager.class, TNonblockingTransport.class} : new Class[]{TProtocol.class};
+
         Class<?> clientClass = getThriftServiceInnerClassOrNull(svcInterface.getEnclosingClass(), client, false);
-        Assert.notNull(clientClass, "the client class must not be null");
+        if (clientClass == null) {
+            throw new ThriftRuntimeException("the client class is null");
+        }
+
         Constructor<?> constructor = ClassUtils.getConstructorIfAvailable(clientClass, args);
-        Assert.notNull(constructor);
+        if (constructor == null) {
+            throw new ThriftRuntimeException("the clientClass constructor is null");
+        }
+
         return constructor;
     }
 

@@ -23,7 +23,4 @@ thrift rpc support in spring: ThriftServiceExporter;ThriftFactoryBean
         </property>
         <property name="serviceInterface"
                   value="***"/>
-        <property name="overloadEnabled">
-            <value>true</value>
-        </property>
     </bean>
